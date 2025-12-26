@@ -1,5 +1,6 @@
 package PedroNunesDev.WorkshopMongo.controller;
 
+import PedroNunesDev.WorkshopMongo.dto.UserDto;
 import PedroNunesDev.WorkshopMongo.model.User;
 import PedroNunesDev.WorkshopMongo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,9 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
+    public ResponseEntity<List<UserDto>> findAll(){
 
-        List<User> list = userService.findAll();
+        List<UserDto> list = userService.findAll();
 
         return ResponseEntity.ok(list);
     }
