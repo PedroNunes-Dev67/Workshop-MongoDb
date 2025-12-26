@@ -1,6 +1,7 @@
 package PedroNunesDev.WorkshopMongo.service;
 
 import PedroNunesDev.WorkshopMongo.dto.UserDto;
+import PedroNunesDev.WorkshopMongo.exception.ObjectNotFoundException;
 import PedroNunesDev.WorkshopMongo.model.User;
 import PedroNunesDev.WorkshopMongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,12 @@ public class UserService {
         List<User> list = userRepository.findAll();
 
         return list.stream().map(user -> new UserDto(user.getId(), user.getName(), user.getEmail())).toList();
+    }
+
+    public UserDto findById(String id){
+
+        User user = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
+
+        return new UserDto(user.getId(),user.getName(),user.getEmail());
     }
 }
