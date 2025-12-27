@@ -25,7 +25,7 @@ public class PostService {
 
         String titleDecode = titleDecoder(title);
 
-        return postRepository.findByTitleContainingIgnoreCase(titleDecode);
+        return postRepository.findByTitle(titleDecode);
     }
 
     private String titleDecoder(String title){
