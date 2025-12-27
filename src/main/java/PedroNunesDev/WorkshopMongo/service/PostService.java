@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.text.ParseException;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -36,6 +40,30 @@ public class PostService {
         }
         catch (UnsupportedEncodingException e){
             return "";
+        }
+    }
+
+    public List<Post> fullSerache(String text, String minDate, String maxDate){
+
+        String textDecode = titleDecoder(text);
+
+        LocalDate minDateDecode = convertDate(minDate, LocalDate.now().plusDays(1));
+        LocalDate maxDateDecode = convertDate(maxDate, LocalDate.now().plusDays(1));
+
+        maxDateDecode.plusDays(1);
+
+        return postRepository.fullSearch(textDecode, minDateDecode, maxDateDecode);
+    }
+
+    private LocalDate convertDate(String textDate, LocalDate defaultDate){
+
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        try {
+            return LocalDate.parse(textDate);
+        }
+        catch (DateTimeException e){
+            return defaultDate;
         }
     }
 }
