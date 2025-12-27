@@ -44,4 +44,23 @@ public class UserService {
 
         return new UserDto(user.getId(),user.getName(),user.getEmail());
     }
+
+    public void deleteUser(String id){
+
+        User user = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("usuário não encontrado."));
+
+        userRepository.delete(user);
+    }
+
+    public UserDto updateUser(String id, UserDtoRequest userDtoRequest){
+
+        User user = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
+
+        user.setName(userDtoRequest.getName());
+        user.setEmail(userDtoRequest.getEmail());
+
+        userRepository.save(user);
+
+        return new UserDto(user.getId(),user.getName(),user.getEmail());
+    }
 }
