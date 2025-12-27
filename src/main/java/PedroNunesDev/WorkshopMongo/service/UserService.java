@@ -56,11 +56,17 @@ public class UserService {
 
         User user = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
 
-        user.setName(userDtoRequest.getName());
-        user.setEmail(userDtoRequest.getEmail());
+        updateData(user, userDtoRequest);
 
         userRepository.save(user);
 
         return new UserDto(user.getId(),user.getName(),user.getEmail());
+    }
+
+    private User updateData(User user, UserDtoRequest userDtoRequest){
+
+        user.setName(userDtoRequest.getName());
+        user.setEmail(userDtoRequest.getEmail());
+        return user;
     }
 }
