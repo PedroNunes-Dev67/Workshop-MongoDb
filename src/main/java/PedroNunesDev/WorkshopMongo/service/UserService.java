@@ -4,6 +4,7 @@ import PedroNunesDev.WorkshopMongo.dto.UserDto;
 import PedroNunesDev.WorkshopMongo.dto.UserDtoRequest;
 import PedroNunesDev.WorkshopMongo.exception.ObjectNotFoundException;
 import PedroNunesDev.WorkshopMongo.exception.UserConflictException;
+import PedroNunesDev.WorkshopMongo.model.Post;
 import PedroNunesDev.WorkshopMongo.model.User;
 import PedroNunesDev.WorkshopMongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +68,12 @@ public class UserService {
 
         user.setName(userDtoRequest.getName());
         user.setEmail(userDtoRequest.getEmail());
+    }
+
+    public List<Post> findAllPosts(String id){
+
+        User user = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Uusuário não encontrado."));
+
+        return user.getPosts();
     }
 }
