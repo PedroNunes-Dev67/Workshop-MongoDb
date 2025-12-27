@@ -22,4 +22,16 @@ public class GlobalResourceExceptionHandler {
                 new ObjectErrorResponse(moment,status.value(),message, request.getRequestURI())
         );
     }
+
+    @ExceptionHandler(UserConflictException.class)
+    public ResponseEntity<ObjectErrorResponse> objectErrorResponseResponseEntity(UserConflictException e, HttpServletRequest request){
+
+        Instant moment = Instant.now();
+        HttpStatus status = HttpStatus.CONFLICT;
+        String message = e.getMessage();
+
+        return ResponseEntity.status(status).body(
+                new ObjectErrorResponse(moment,status.value(),message, request.getRequestURI())
+        );
+    }
 }

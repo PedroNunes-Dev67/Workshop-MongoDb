@@ -1,6 +1,7 @@
 package PedroNunesDev.WorkshopMongo.controller;
 
 import PedroNunesDev.WorkshopMongo.dto.UserDto;
+import PedroNunesDev.WorkshopMongo.dto.UserDtoRequest;
 import PedroNunesDev.WorkshopMongo.model.User;
 import PedroNunesDev.WorkshopMongo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,13 @@ public class UserController {
         UserDto user = userService.findById(id);
 
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDtoRequest userDtoRequest){
+
+        UserDto user = userService.createUser(userDtoRequest);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 }
