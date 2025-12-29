@@ -81,7 +81,7 @@ mvn spring-boot:run
 
 # Ou compilando o JAR
 mvn clean package
-java -jar target/crud-usuario-swagger-0.0.1-SNAPSHOT.jar
+java -jar target/workshop-mongodb-0.0.1-SNAPSHOT.jar
 ```
 
 ### 3️⃣ Acesse a documentação Swagger
