@@ -11,7 +11,7 @@ relacionamentos entre documentos.
 ---
 
 ## 📋 Sobre o Projeto
-O Workshop-MongoDb é uma aplicação de exemplo tipo rede social construída em Java, que demonstra o uso de MongoDB (banco de dados NoSQL) para persistência de dados. O foco principal do projeto é criar uma API REST para posts e comentários, explorando funcionalidades avançadas do MongoDB, como consultas complexas e relacionamentos entre documentos, sem utilizar um banco relacional tradicional. 
+O Rede-Social-MongoDB é uma aplicação de exemplo tipo rede social construída em Java, que demonstra o uso de MongoDB (banco de dados NoSQL) para persistência de dados. O foco principal do projeto é criar uma API REST para posts e comentários, explorando funcionalidades avançadas do MongoDB, como consultas complexas e relacionamentos entre documentos, sem utilizar um banco relacional tradicional. 
 github.com
 
 ### ✨ Principais Caracterísicas
